@@ -1,0 +1,13 @@
+.mui-content .nav-links > ul {
+  list-style: none;
+}
+.mui-content .nav-links > ul > li {
+  float: left;
+  width: 33.33%;
+}
+.mui-content .nav-links > ul > li > a {
+  width: 100%;
+}
+.mui-content .nav-links > ul > li > a > img {
+  width: 100%;
+}
