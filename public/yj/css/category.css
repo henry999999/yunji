@@ -1,0 +1,21 @@
+.my-content {
+  width: 100%;
+  position: absolute;
+  top: 44px;
+  left: 0;
+  bottom: 50px;
+}
+.my-content .nav-left {
+  width: 80px;
+  height: 100%;
+  float: left;
+  overflow: hidden;
+  background-color: pink;
+  position: relative;
+}
+.my-content .nav-right {
+  height: 100%;
+  margin-left: 90px;
+  background-color: skyblue;
+  position: relative;
+}
