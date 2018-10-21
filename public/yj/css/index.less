@@ -1,7 +1,13 @@
+body{
+  //padding-top: 20px;
+  //padding-bottom: 50px;
+}
 //主要内容
 .mui-content{
+  padding: 0 10px;
 //导航链接样式
   .nav-links{
+    padding: 10px 0;
     >ul{
       list-style: none;
       >li{
@@ -13,6 +19,79 @@
            width: 100%;
          }
        }
+      }
+    }
+  }
+  //品牌专区样式
+  .brand{
+    >.title{
+      width: 100%;
+    }
+    >ul{
+     padding-top: 10px;
+      li{
+        float: left;
+        width: 25%;
+        a>{
+          display: block;
+          width: 100%;
+          >img{
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+
+  //运动生活专区
+  .product{
+    //margin-top: 10px;
+    >.title{
+      width: 100%;
+    }
+    >ul{
+      padding: 10px 0;
+      >li{
+        width: 50%;
+        float: left;
+        padding: 5px;
+        box-shadow: 0 0 5px #ccc;
+      > a{
+         >img{
+           width: 100%;
+         }
+        >.text{
+          display: block;
+          padding: 5px 10px;
+          font-size: 14px;
+          color: #8f8f94;
+          text-align: center;
+        }
+        >p{
+          text-align: center;
+          >span:first-child{
+              color: red;
+            margin-right: 6px;
+          }
+          >span:last-child{
+            text-decoration: line-through;
+          }
+        }
+        >.busy-now{
+          display: block;
+          height: 30px;
+          line-height: 30px;
+          background-color: #006699;
+          width: 80px;
+          font-size: 16px;
+          text-align: center;
+          color: #fff;
+          margin: 0 auto;
+          border-radius: 5px;
+          margin-bottom: 5px;
+        }
+       }
+
       }
     }
   }

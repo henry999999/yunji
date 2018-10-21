@@ -1,3 +1,9 @@
+.mui-content {
+  padding: 0 10px;
+}
+.mui-content .nav-links {
+  padding: 10px 0;
+}
 .mui-content .nav-links > ul {
   list-style: none;
 }
@@ -10,4 +16,66 @@
 }
 .mui-content .nav-links > ul > li > a > img {
   width: 100%;
+}
+.mui-content .brand > .title {
+  width: 100%;
+}
+.mui-content .brand > ul {
+  padding-top: 10px;
+}
+.mui-content .brand > ul li {
+  float: left;
+  width: 25%;
+}
+.mui-content .brand > ul li a {
+  display: block;
+  width: 100%;
+}
+.mui-content .brand > ul li a > img {
+  width: 100%;
+}
+.mui-content .product > .title {
+  width: 100%;
+}
+.mui-content .product > ul {
+  padding: 10px 0;
+}
+.mui-content .product > ul > li {
+  width: 50%;
+  float: left;
+  padding: 5px;
+  box-shadow: 0 0 5px #ccc;
+}
+.mui-content .product > ul > li > a > img {
+  width: 100%;
+}
+.mui-content .product > ul > li > a > .text {
+  display: block;
+  padding: 5px 10px;
+  font-size: 14px;
+  color: #8f8f94;
+  text-align: center;
+}
+.mui-content .product > ul > li > a > p {
+  text-align: center;
+}
+.mui-content .product > ul > li > a > p > span:first-child {
+  color: red;
+  margin-right: 6px;
+}
+.mui-content .product > ul > li > a > p > span:last-child {
+  text-decoration: line-through;
+}
+.mui-content .product > ul > li > a > .busy-now {
+  display: block;
+  height: 30px;
+  line-height: 30px;
+  background-color: #006699;
+  width: 80px;
+  font-size: 16px;
+  text-align: center;
+  color: #fff;
+  margin: 0 auto;
+  border-radius: 5px;
+  margin-bottom: 5px;
 }
