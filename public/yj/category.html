@@ -11,7 +11,9 @@
     <link rel="stylesheet" href="css/category.css"/>
     <script src="assets/mui/js/mui.min.js"></script>
     <script src="assets/zepto/zepto.min.js"></script>
+    <script src="js/common.js"></script>
     <script src="js/caregory.js"></script>
+    <script src="assets/artTemplate/template-native.js"></script>
 </head>
 <body>
 <header class="mui-bar mui-bar-nav my-header">
@@ -41,11 +43,18 @@
         <div class="mui-scroll-wrapper">
             <div class="mui-scroll">
                 <!--这里放置真实显示的DOM内容-->
-                <ul>
-                    <li> 1<br>1<br>1<br>1<br>1<br>1<br>1<br>1<br>1<br>1<br>1<br>1<br>1<br>1<br>1
-                        <br>1<br>1<br>1<br>1<br>1<br>1<br>1<br>1<br>1<br>1<br>1<br>
-                        1<br>1<br>1<br>1<br>1<br>1<br>1<br>1<br>1<br>1<br>1<br>1<br>1<br>1<br></li>
-                </ul>
+                <div class="a-links">
+                    <!--<a href="javascript:;" class="active">运动馆</a>-->
+                    <!--<a href="javascript:;">女士馆</a>-->
+                    <!--<a href="javascript:;">男士馆</a>-->
+                    <!--<a href="javascript:;">运动馆</a>-->
+                    <!--<a href="javascript:;">运动馆</a>-->
+                    <!--<a href="javascript:;">运动馆</a>-->
+                    <!--<a href="javascript:;">女士馆</a>-->
+                    <!--<a href="javascript:;">男士馆</a>-->
+                    <!--<a href="javascript:;">运动馆</a>-->
+                    <!--<a href="javascript:;">运动馆</a>-->
+                </div>
             </div>
         </div>
     </div>
@@ -53,14 +62,31 @@
         <div class="mui-scroll-wrapper">
             <div class="mui-scroll">
                 <!--这里放置真实显示的DOM内容-->
-                <ul>
-                    <li> 1<br>1<br>1<br>1<br>1<br>1<br>1<br>1<br>1<br>1<br>1<br>1<br>1<br>1<br>1
-                        <br>1<br>1<br>1<br>1<br>1<br>1<br>1<br>1<br>1<br>1<br>1<br>
-                        1<br>1<br>1<br>1<br>1<br>1<br>1<br>1<br>1<br>1<br>1<br>1<br>1<br>1<br></li>
+                <ul class="mui-clearfix brand-links">
+                    <!--<li><a href="javascript:;"><img src="images/brand1.png"/></a><p>耐克</p></li>-->
+                    <!--<li><a href="javascript:;"><img src="images/brand2.png"/></a><p>耐克</p></li>-->
+                    <!--<li><a href="javascript:;"><img src="images/brand3.png"/></a><p>耐克</p></li>-->
+                    <!--<li><a href="javascript:;"><img src="images/brand4.png"/></a><p>耐克</p></li>-->
+                    <!--<li><a href="javascript:;"><img src="images/brand5.png"/></a><p>耐克</p></li>-->
                 </ul>
             </div>
         </div>
     </div>
 </div>
+<script id="template-first" type="text/template">
+   <% for(var i=0;i<result.length;i++){ %>
+       <a href="javascript:;" data-categoryid="<%=result[i].id %>"><%=result[i].categoryName %></a>
+    <% } %>
+</script>
+<script id="template-second" type="text/html">
+    <% if(result.length!=0){ %>
+        <% for(var i=0;i<result.length;i++){ %>
+        <li><a href="javascript:;"><img src="<%=result[i].brandLogo %>"/></a><p><%=result[i].brandName %></p></li>
+        <% } %>
+    <% }else{%>
+       <span>暂无数据</span>
+    <% } %>
+
+</script>
 </body>
 </html>
