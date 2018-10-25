@@ -10,12 +10,35 @@
   height: 100%;
   float: left;
   overflow: hidden;
-  background-color: pink;
+  background-color: #fff;
   position: relative;
+}
+.my-content .nav-left .a-links {
+  background-color: #fff;
+}
+.my-content .nav-left .a-links a {
+  display: block;
+  height: 45px;
+  line-height: 45px;
+  font-size: 14px;
+  text-align: center;
+  border-right: 1px solid #e0e0e0;
+  border-bottom: 1px solid #e0e0e0;
+}
+.my-content .nav-left .a-links .active {
+  background-color: #ccc;
+  border-right: none;
 }
 .my-content .nav-right {
   height: 100%;
   margin-left: 90px;
-  background-color: skyblue;
+  background-color: #fff;
   position: relative;
+  margin-top: 10px;
+}
+.my-content .nav-right ul li {
+  float: left;
+}
+.my-content .nav-right ul li p {
+  text-align: center;
 }
