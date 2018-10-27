@@ -6,11 +6,11 @@ $(function(){
             var username = $('[name="username"]').val().trim();
             var password = $('[name="password"]').val().trim();
             if(!username){
-                alert("ÇëÊäÈëÓÃ»§Ãû");
+                alert("è¯·è¾“å…¥ç”¨æˆ·å");
                 return;
             }
             if(!password){
-                alert("ÇëÊäÈëÃÜÂë");
+                alert("è¯·è¾“å…¥å¯†ç ");
                 return;
             }
             $.ajax({
@@ -22,10 +22,12 @@ $(function(){
                 },
                 success: function (res) {
                     if(res.success==true){
-                        mui.toast("µÇÂ¼³É¹¦");
+                        mui.toast("ç™»å½•æˆåŠŸ");
                         setTimeout(function(){
                             location.href="user.html";
                         },2000)
+                    }else{
+                        mui.toast("ç”¨æˆ·åæˆ–å¯†ç é”™è¯¯!");
                     }
 
                 }

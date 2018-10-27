@@ -39,7 +39,7 @@ $(function () {
             }
         })
     });
-
+    //获取验证码
     $(".getVcode").on("tap",function(){
         $.ajax({
             url:"/user/vCode",
