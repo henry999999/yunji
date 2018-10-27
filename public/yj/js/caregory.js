@@ -28,7 +28,6 @@ $(function(){
             url:"/category/querySecondCategory?id="+id,
             type:"get",
             success:function(response){
-                console.log(response.rows);
                 var html=template("template-second",{result:response.rows});
                 $(".brand-links").html(html);
             }

@@ -1,17 +1,17 @@
 .mui-content {
   background-color: #fff;
 }
-.mui-content > .mui-row {
+.mui-content .mui-row {
   height: 30px;
   line-height: 30px;
   text-align: center;
   margin: 10px;
   font-size: 14px;
 }
-.mui-content > .mui-row > .mui-col-xs-6 {
+.mui-content .mui-row > .mui-col-xs-6 {
   background-color: #eee;
 }
-.mui-content > .mui-row > .mui-col-xs-6 > .mui-icon-arrowdown {
+.mui-content .mui-row > .mui-col-xs-6 > .mui-icon-arrowdown {
   font-size: 12px;
 }
 .mui-content .product > .title {

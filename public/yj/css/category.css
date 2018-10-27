@@ -38,6 +38,13 @@
 }
 .my-content .nav-right ul li {
   float: left;
+  width: 33.33%;
+}
+.my-content .nav-right ul li a {
+  width: 100%;
+}
+.my-content .nav-right ul li a > img {
+  width: 100%;
 }
 .my-content .nav-right ul li p {
   text-align: center;
