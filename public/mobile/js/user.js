@@ -22,9 +22,8 @@ $(function(){
 		}
 	});
 
-
+	//退出登录
 	$('#logout').on('tap',function(){
-
 		$.ajax({
 			url:'/user/logout',
 			type:'get',
