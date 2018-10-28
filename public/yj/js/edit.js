@@ -50,7 +50,7 @@ $(function(){
 
     });
 
-    //省市选择器
+    //三级联动省市选择器
     $("#city").on("tap",function(){
         var picker = new mui.PopPicker({
             layer: 3

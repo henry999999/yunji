@@ -1,5 +1,13 @@
+#refreshContainer {
+  padding-top: 0;
+  padding-bottom: 0;
+}
 .mui-content {
   background-color: #fff;
+  position: absolute;
+  left: 0;
+  top: 44px;
+  bottom: 50px;
 }
 .mui-content .mui-row {
   height: 30px;
@@ -18,7 +26,7 @@
   width: 100%;
 }
 .mui-content .product > ul {
-  padding: 10px 0;
+  padding: 10px;
 }
 .mui-content .product > ul > li {
   width: 50%;

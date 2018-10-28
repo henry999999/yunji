@@ -1,25 +1,74 @@
 /**
  * Created by Administrator on 2018/10/26 0026.
  */
+var keyword= getParamsByUrl(location.href,"keyword");
+var page=1;
+var price=1;
+var num=1;
 $(function(){
-    var keyword= getParamsByUrl(location.href,"keyword");
-    console.log(keyword);
     mui.init({
         pullRefresh : {
-            container:"#refreshContainer",//´ýË¢ÐÂÇøÓò±êÊ¶£¬querySelectorÄÜ¶¨Î»µÄcssÑ¡ÔñÆ÷¾ù¿É£¬±ÈÈç£ºid¡¢.classµÈ
+            container:"#refreshContainer",//å¾…åˆ·æ–°åŒºåŸŸæ ‡è¯†ï¼ŒquerySelectorèƒ½å®šä½çš„cssé€‰æ‹©å™¨å‡å¯ï¼Œæ¯”å¦‚ï¼šidã€.classç­‰
             up : {
-                height:50,//¿ÉÑ¡.Ä¬ÈÏ50.´¥·¢ÉÏÀ­¼ÓÔØÍÏ¶¯¾àÀë
-                auto:true,//¿ÉÑ¡,Ä¬ÈÏfalse.×Ô¶¯ÉÏÀ­¼ÓÔØÒ»´Î
-                contentrefresh : "ÕýÔÚ¼ÓÔØ...",//¿ÉÑ¡£¬ÕýÔÚ¼ÓÔØ×´Ì¬Ê±£¬ÉÏÀ­¼ÓÔØ¿Ø¼þÉÏÏÔÊ¾µÄ±êÌâÄÚÈÝ
-                contentnomore:'Ã»ÓÐ¸ü¶àÊý¾ÝÁË',//¿ÉÑ¡£¬ÇëÇóÍê±ÏÈôÃ»ÓÐ¸ü¶àÊý¾ÝÊ±ÏÔÊ¾µÄÌáÐÑÄÚÈÝ£»
-                callback : getData //±ØÑ¡£¬Ë¢ÐÂº¯Êý£¬¸ù¾Ý¾ßÌåÒµÎñÀ´±àÐ´£¬±ÈÈçÍ¨¹ýajax´Ó·þÎñÆ÷»ñÈ¡ÐÂÊý¾Ý£»
+                height:50,//å¯é€‰.é»˜è®¤50.è§¦å‘ä¸Šæ‹‰åŠ è½½æ‹–åŠ¨è·ç¦»
+                auto:true,//å¯é€‰,é»˜è®¤false.è‡ªåŠ¨ä¸Šæ‹‰åŠ è½½ä¸€æ¬¡
+                contentrefresh : "æ­£åœ¨åŠ è½½...",//å¯é€‰ï¼Œæ­£åœ¨åŠ è½½çŠ¶æ€æ—¶ï¼Œä¸Šæ‹‰åŠ è½½æŽ§ä»¶ä¸Šæ˜¾ç¤ºçš„æ ‡é¢˜å†…å®¹
+                contentnomore:'æ²¡æœ‰æ›´å¤šæ•°æ®äº†',//å¯é€‰ï¼Œè¯·æ±‚å®Œæ¯•è‹¥æ²¡æœ‰æ›´å¤šæ•°æ®æ—¶æ˜¾ç¤ºçš„æé†’å†…å®¹ï¼›
+                callback : getData //å¿…é€‰ï¼Œåˆ·æ–°å‡½æ•°ï¼Œæ ¹æ®å…·ä½“ä¸šåŠ¡æ¥ç¼–å†™ï¼Œæ¯”å¦‚é€šè¿‡ajaxä»ŽæœåŠ¡å™¨èŽ·å–æ–°æ•°æ®ï¼›
             }
         }
     });
+    //æŒ‰ä»·æ ¼æŽ’åº
+    $("#price").on("tap",function(){
+       price = price==1 ? 2:1;
+        //alert(price);
+        page=1;
+        $("#tmpBox").html("");
+        mui('#refreshContainer').pullRefresh().refresh(true);
+        getData();
+
+    })
+    //æŒ‰é”€é‡æŽ’åº
+    $("#sales").on("tap",function(){
+        num = num == 1 ? 2:1;
+        page=1;
+        $("#tmpBox").html("");
+        mui('#refreshContainer').pullRefresh().refresh(true);
+        getData();
+    })
+
+    //ç‚¹å‡»ç«‹å³è´­ä¹°æŒ‰é’®
+    $("#tmpBox").on("tap",".busy-now",function(){
+        var buyId=$(this).data("id");
+        location.href="details.html?id="+buyId;
+    })
 })
 
-//function getData{
-//    $.ajax({
-//
-//    })
-//}
+function getData(){
+    var This=this;
+    $.ajax({
+        url:"/product/queryProduct",
+        type:"get",
+        data:{
+            proName:keyword,
+            price:price,
+            num:num,
+            page:page++,
+            pageSize:3
+
+        },
+        success:function(res){
+            console.log(res.data);
+            if(res.data.length>0){
+                var html = template("productTmp",{data:res.data});
+                //console.log(html);
+                //$("#tmpBox").html(html);
+                $("#tmpBox").append(html);
+                This.endPullupToRefresh(false);
+            }else{
+                This.endPullupToRefresh(true);
+            }
+
+        }
+    })
+}

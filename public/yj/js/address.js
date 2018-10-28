@@ -6,11 +6,11 @@ $(function(){
         url:"/address/queryAddress",
         type:"get",
         success:function(res){
+            console.log(res);
             if(res){
                 var html = template("addressTmp",{res:res});
                 $("#addressBox").html(html);
             }
-
         }
     });
 
