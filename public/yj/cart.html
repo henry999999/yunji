@@ -38,6 +38,41 @@
         background-color: #fff;
         font-weight: 700;
     }
+    .mui-content .size{
+        padding: 20px;
+        font-size: 14px;
+        border-bottom: 1px solid #ccc;
+    }
+    .mui-content .size > h4{
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .mui-content .size > span {
+        display: inline-block;
+        width: 25px;
+        height: 25px;
+        line-height: 25px;
+        text-align: center;
+        border: 1px solid #ccc;
+        margin-right: 10px;
+        margin-bottom: 10px;
+    }
+    .mui-content .size .current {
+        background-color: #e92322;
+        color: #fff;
+    }
+    .number{
+        text-align: center;
+    }
+    .mui-content .number {
+        padding: 10px;
+        font-size: 14px;
+    }
+    .mui-content .number .mui-numbox {
+        margin: 0 10px;
+        height: 30px;
+    }
+
 </style>
 <body>
 <header class="mui-bar mui-bar-nav my-header">
@@ -83,17 +118,58 @@
             <!--</div>-->
         <!--</li>-->
     </ul>
-    <div id="popover" class="mui-popover">
-        <ul class="mui-table-view">
-            <li class="mui-table-view-cell"><a href="#">Item1</a></li>
-            <li class="mui-table-view-cell"><a href="#">Item2</a></li>
-            <li class="mui-table-view-cell"><a href="#">Item3</a></li>
-            <li class="mui-table-view-cell"><a href="#">Item4</a></li>
-            <li class="mui-table-view-cell"><a href="#">Item5</a></li>
-        </ul>
+
+    <!--弹出层编辑商品-->
+    <div id="popover" class="mui-popover editBox" >
+        <!--<div class="size">-->
+            <!--<h4>编辑商品</h4>-->
+            <!--尺码:  <span>35</span>-->
+            <!--<span>35</span>-->
+            <!--<span>35</span>-->
+            <!--<span>35</span>-->
+            <!--<span>35</span>-->
+            <!--<span>35</span>-->
+            <!--<span>35</span>-->
+        <!--</div>-->
+        <!--<div class="number">-->
+          <!--数量:<div class="mui-numbox" data-numbox-step='1' data-numbox-min='0' data-numbox-max='100'>-->
+           <!--<button class="mui-btn mui-numbox-btn-minus" type="button">-</button>-->
+            <!--<input class="mui-numbox-input" type="number" />-->
+            <!--<button class="mui-btn mui-numbox-btn-plus" type="button">+</button>-->
+           <!--</div>-->
+        <!--</div>-->
+        <!--<div class="mui-popup-buttons"><span class="mui-popup-button">确定</span>-->
+            <!--<span class="mui-popup-button mui-popup-button-bold">取消</span>-->
+        <!--</div>-->
     </div>
     <div class="totalPrice">订单总额: ￥<span id="totalPrice">112</span></div>
 </div>
+
+<!--弹出层编辑购物车模板-->
+<script type="text/template" id="editTmp">
+    <div class="size">
+        <h4>编辑商品</h4>
+        尺码:
+        <%  var s=productSize.split("-"); for(var i=s[0];i<=s[1];i++){ %>
+        <%  if(i==size){ %>
+           <span class="current"><%=i %></span>
+        <% } %>
+         <span><%=i %></span>
+        <% } %>
+
+    </div>
+    <div class="number">
+        数量:<div class="mui-numbox numBox" data-numbox-step='1' data-numbox-min='0' data-numbox-max='<%=productNum %>'>
+        <button class="mui-btn mui-numbox-btn-minus" type="button">-</button>
+        <input class="mui-numbox-input productNum" type="number" value="<%=num %>"/>
+        <button class="mui-btn mui-numbox-btn-plus" type="button">+</button>
+    </div>
+    </div>
+    <div class="mui-popup-buttons"><span class="mui-popup-button" id="editConfirm" data-id="<%=id %>">确定</span>
+        <span class="mui-popup-button mui-popup-button-bold" id="editCancel">取消</span>
+    </div>
+</script>
+
 
 <script type="text/template" id="cartTmp">
     <%   for(var i=0;i<res.length;i++){ %>
