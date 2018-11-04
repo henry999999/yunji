@@ -11,11 +11,11 @@ $(function(){
             id:id
         },
         success:function(res){
-            console.log(res);
             var html = template("detailTmp",res);
             $("#detailBox").html(html);
         }
     });
+    //初始化数量选择器
     mui($(".numBox")).numbox();
     //选择尺码
     $(".size").on("tap","span",function(){

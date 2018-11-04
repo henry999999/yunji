@@ -7,7 +7,6 @@ $.ajax({
     type:"get",
     async:false,
     success:function(res){
-        console.log(res);
         if(res.error&&res.error==400){
             location.href="login.html";
         }
@@ -20,17 +19,69 @@ $(function(){
         url:"/cart/queryCart",
          type:"get",
         success:function(res){
-            console.log(res);
             var html = template("cartTmp",{res:res});
             $("#addressBox").html(html);
         }
     });
     //给编辑按钮绑定事件
     $("#addressBox").on("tap",'#editBtn',function(){
-        var id = $(this).data("id");
+        var id = parseInt($(this).data("id"));
         //location.href="edit.html?id="+id;
+        //弹出编辑框隐藏层
         mui('.bottomPopover').popover('toggle');//show hide toggle
+        $.ajax({
+            url:"/cart/queryCart",
+            type:"get",
+            async:false,
+            success:function(res){
+                var data={};
+               for(var i=0;i<res.length;i++){
+                   if(res[i].id==id){
+                       data = res[i];
+                   }
+               }
+                var html = template("editTmp",data);
+                $(".editBox").html(html);
+            }
+        });
+        //初始化数量选择器
+        mui($(".numBox")).numbox();
     });
+
+    //修改尺码
+    $(".editBox").on("tap",".size > span",function(){
+        $(this).addClass("current").siblings().removeClass("current");
+    });
+    //给确定修改按钮添加事件
+    $(".editBox").on("click","#editConfirm",function(){
+        var id = $(this).data("id");
+        var size = $(".current").text();
+        var num = $(".productNum").val();
+        $.ajax({
+            url:"/cart/updateCart",
+            type:"post",
+            data:{
+                id:id,
+                size:size,
+                num:num
+            },
+            success:function(res){
+                console.log(res);
+                if(res.success){
+                    //重新加载页面
+                    location.reload();
+                }
+            }
+        })
+    })
+    //给取消修改按钮添加事件
+    $(".editBox").on("click","#editCancel",function(){
+       $("#popover").hide();
+        $(".mui-backdrop").hide();
+        //<div class="mui-backdrop mui-active" style=""></div>
+        //mui('.bottomPopover').popover('toggle');//show hide toggle
+    })
+
     //给删除按钮绑定事件
     $("#addressBox").on("tap","#delBtn",function(){
         var id = $(this).data("id");
