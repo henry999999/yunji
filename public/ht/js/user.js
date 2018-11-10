@@ -4,28 +4,29 @@
 var page = 1;
 var pageSize = 2;
 $(function () {
-    //²éÑ¯ÓÃ»§
+   //è·å–ç”¨æˆ·æ•°æ®
     getUser();
-    //¸üĞÂÓÃ»§×´Ì¬
+    //æ”¹å˜ç”¨æˆ·çŠ¶æ€Ì¬
     $("#userBox").on("click","#statusBtn", function () {
         var id = $(this).data("id");
-        var isDelete = $(this).data("isDelete");
-        alert(isDelete);
+        var isDelete = $(this).data("isdelete");
         $.ajax({
             url:"/user/updateUser",
             type:"post",
             data:{
                 id:id,
-                isDelete:isDelete
+                isDelete:isDelete ? 0:1
             },
             success: function (res) {
-                console.log(res);
+                if(res.success){
+                    location.reload();
+                }
             }
         })
     })
 
 })
-//²éÑ¯ÓÃ»§
+//è·å–ç”¨æˆ·æ•°æ®
 function getUser(){
     $.ajax({
         url:"/user/queryUser",

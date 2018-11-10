@@ -1,7 +1,7 @@
 /**
  * Created by Administrator on 2018/11/6 0006.
  */
-//判断管理员是否登录
+//楠岃瘉鏄惁鐧诲綍
 $.ajax({
     url:"/employee/checkRootLogin",
     type:"get",
@@ -14,6 +14,7 @@ $.ajax({
 })
 
 $(function () {
+    //鐐瑰嚮鐧诲綍
     $("#btnLogin").on("click", function (e) {
         e.preventDefault();
         var username = $("[name='username']").val();

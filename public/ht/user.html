@@ -108,7 +108,7 @@
 			<td><%=rows[i].isDelete ? "已启用" : "已禁用" %></td>
 			<td>
 				<button type="button" id="statusBtn" class="btn  <%=rows[i].isDelete ? 'btn-danger' : 'btn-primary' %>"
-						data-id="<%=rows[i].id %>" data-isDelete="<%=rows[i].isDelete %>">
+						data-id="<%=rows[i].id %>" data-isdelete="<%=rows[i].isDelete %>">
 					<%=rows[i].isDelete ? "禁用" : "启用" %>
 				</button>
 			</td>

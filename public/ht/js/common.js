@@ -1,4 +1,4 @@
-//ÅĞ¶Ï¹ÜÀíÔ±ÊÇ·ñµÇÂ¼
+//è·å–ç”¨æˆ·æ•°æ®å›å¤
 $.ajax({
 	url:"/employee/checkRootLogin",
 	type:"get",
@@ -16,7 +16,7 @@ $(function(){
 		$(this).find('ul').slideToggle();
 	});
 
-	//×¢Ïú¹¦ÄÜ
+	//é€€å‡ºç™»å½•
 	$(".login_out_bot").on("click", function () {
 		$.ajax({
 			url:"/employee/employeeLogout",
