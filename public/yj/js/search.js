@@ -2,7 +2,7 @@
  * Created by Administrator on 2018/10/23 0023.
  */
 $(function(){
-
+    //ç‚¹å‡»æœç´¢æŒ‰é’®
     $(".search-btn").on("tap",function(){
         //location.href
         var keyword=$(".search-text").val();
@@ -12,7 +12,7 @@ $(function(){
             location.href="search-list.html?keyword="+keyword;
             $(".search-text").val("");
         }else{
-            alert("ÇëÊäÈëËÑË÷¹Ø¼ü×Ö");
+            alert("è¯·è¾“å…¥æœç´¢å…³é”®å­—");
         }
     })
     var keyarr=[];
@@ -20,11 +20,16 @@ $(function(){
         keyarr=JSON.parse(localStorage.getItem("keyArr"));
     }
     var data=JSON.parse(localStorage.getItem("keyArr"));
-    console.log(data);
     var serhtml=template("history",{data:data});
     $(".history-txt").html(serhtml);
 
-    //Çå¿ÕËÑË÷ÀúÊ·
+    //ç‚¹å‡»æœç´¢å†å²
+    $(".history-txt").on("tap","li", function () {
+        $(".search-text").val($(this).text());
+        $(".search-btn").trigger('tap');
+    });
+
+    //æ¸…ç©ºæœç´¢å†å²
     $(".clearHistory").on("tap",function(){
         localStorage.clear();
         keyarr=[];
